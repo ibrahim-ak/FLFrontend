@@ -1,8 +1,6 @@
 <template>
      <div>
-<h1>
-     SideBar
-</h1>
+          <h1>Not found error 404</h1>
      </div>
 </template>
 
@@ -10,6 +8,4 @@
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -5,7 +5,7 @@
 </script>
 
 <template>
-     <h1>batata</h1>
+     <h1>Hello batata</h1>
 </template>
 
 <style scoped>
