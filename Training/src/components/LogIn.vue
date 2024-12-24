@@ -2,10 +2,13 @@
 import router from '@/routes';
 import { ref } from 'vue';
 const name=ref('')
+const routesNames = {
+"SideBar": "SideBar"
+}
 const redirect = () => {
      if (name.value.trim() !== "") {
 
-          router.push({ name: 'SideBar' })
+          router.push({ name: routesNames.SideBar })
      }
 }
 </script>
