@@ -1,78 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Icon } from '@iconify/vue'; // Correct named import
 
 const isSideBarActive = ref(true);
 const openSubMenuIndex = ref<number | null>(null);
 const SubMenulist = ref([
-     { title: "Dashboard" },
-     { title: "Water" },
-     { title: "Water" },
+     { title: "Dashboard", icon: "mdi:view-dashboard" },
+     { title: "Water", icon: "mdi:water" },
+     { title: "Control", icon: "mdi:cogs" },
      {
-          title: "Control",
-          spacing: true,
+          title: "Projects",
+          icon: "mdi:folder",
           submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
+               { title: "Submenu Item 1" },
+               { title: "Submenu Item 2" },
+               { title: "Submenu Item 3" },
           ],
      },
-     { title: "Water" },
-     { title: "Water" },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
-     { title: "Projects" },
-     {
-          title: "Control",
-          spacing: true,
-          submenuItems: [
-               { title: "submenuItem1" },
-               { title: "submenuItem2" },
-               { title: "submenuItem3" },
-          ],
-     },
+     { title: "Settings", icon: "mdi:cog" },
 ]);
 
 const clickSidetoggle = () => {
@@ -93,12 +38,12 @@ const handelHover = () => {
           <div @mouseover="handelHover"
                :class="[isSideBarActive ? 'w-2/12' : 'w-16', 'bg-white', 'h-screen', 'overflow-y-auto']">
                <div class="flex justify-between items-center p-1 m-1">
-                    <div class="flex items-center gap-x-2">
+                    <div class="flex items-center">
                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                               <path fill="currentColor"
                                    d="M8.5 13.933H5.563a2.5 2.5 0 0 1-2.5-2.5v-5.87a2.5 2.5 0 0 1 2.5-2.5H8.5a2.5 2.5 0 0 1 2.5 2.5v5.87a2.5 2.5 0 0 1-2.5 2.5m-2.937-9.87a1.5 1.5 0 0 0-1.5 1.5v5.87a1.5 1.5 0 0 0 1.5 1.5H8.5a1.5 1.5 0 0 0 1.5-1.5v-5.87a1.5 1.5 0 0 0-1.5-1.5ZM8.5 20.935H5.564a2.5 2.5 0 0 1 0-5H8.5a2.5 2.5 0 1 1 0 5m-2.934-4a1.5 1.5 0 0 0 0 3H8.5a1.5 1.5 0 1 0 0-3Zm12.87 4H15.5a2.5 2.5 0 0 1-2.5-2.5v-5.87a2.5 2.5 0 0 1 2.5-2.5h2.934a2.5 2.5 0 0 1 2.5 2.5v5.87a2.5 2.5 0 0 1-2.498 2.5m-2.936-9.87a1.5 1.5 0 0 0-1.5 1.5v5.87a1.5 1.5 0 0 0 1.5 1.5h2.934a1.5 1.5 0 0 0 1.5-1.5v-5.87a1.5 1.5 0 0 0-1.5-1.5Zm2.936-3.002H15.5a2.5 2.5 0 0 1 0-5h2.934a2.5 2.5 0 0 1 0 5Zm-2.934-4a1.5 1.5 0 0 0 0 3h2.934a1.5 1.5 0 0 0 0-3Z" />
                          </svg>
-                         <h2 v-if="isSideBarActive">flowless</h2>
+                         <h2 v-if="isSideBarActive" class="text-sky-600 p-1">flowless</h2>
                     </div>
 
                     <svg v-if="isSideBarActive" @click="clickSidetoggle"
@@ -110,17 +55,15 @@ const handelHover = () => {
                <hr />
 
                <ul>
-                    <li v-for="(items, index) in SubMenulist" :key="index" class="flex flex-col gap-y-2 p-1 m-1">
+                    <li v-for="(items, index) in SubMenulist" :key="index" class="flex flex-col p-1 pb-4 m-1">
                          <div class="flex items-center gap-x-2">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                   <path fill="currentColor"
-                                        d="M8.5 13.933H5.563a2.5 2.5 0 0 1-2.5-2.5v-5.87a2.5 2.5 0 0 1 2.5-2.5H8.5a2.5 2.5 0 0 1 2.5 2.5v5.87a2.5 2.5 0 0 1-2.5 2.5m-2.937-9.87a1.5 1.5 0 0 0-1.5 1.5v5.87a1.5 1.5 0 0 0 1.5 1.5H8.5a1.5 1.5 0 0 0 1.5-1.5v-5.87a1.5 1.5 0 0 0-1.5-1.5ZM8.5 20.935H5.564a2.5 2.5 0 0 1 0-5H8.5a2.5 2.5 0 1 1 0 5m-2.934-4a1.5 1.5 0 0 0 0 3H8.5a1.5 1.5 0 1 0 0-3Zm12.87 4H15.5a2.5 2.5 0 0 1-2.5-2.5v-5.87a2.5 2.5 0 0 1 2.5-2.5h2.934a2.5 2.5 0 0 1 2.5 2.5v5.87a2.5 2.5 0 0 1-2.498 2.5m-2.936-9.87a1.5 1.5 0 0 0-1.5 1.5v5.87a1.5 1.5 0 0 0 1.5 1.5h2.934a1.5 1.5 0 0 0 1.5-1.5v-5.87a1.5 1.5 0 0 0-1.5-1.5Zm2.936-3.002H15.5a2.5 2.5 0 0 1 0-5h2.934a2.5 2.5 0 0 1 0 5Zm-2.934-4a1.5 1.5 0 0 0 0 3h2.934a1.5 1.5 0 0 0 0-3Z" />
-                              </svg>
+                              <!-- Render Iconify Icon Dynamically -->
+                              <Icon :icon="items.icon" v-if="items.icon" class="text-2xl" />
                               <h2 v-if="isSideBarActive">{{ items.title }}</h2>
                               <svg v-if="items.submenuItems && isSideBarActive" @click="toggleSubMenu(index)"
                                    :class="`${openSubMenuIndex === index ? 'rotate-90' : 'rotate-0'} cursor-pointer`"
                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                   <path fill="currentColor" d="m9 18l6-6l-6-6l-1.4 1.4l4.6 4.6l-4.6 4.6z" />
+                                   <path fill="currentColor" d="M9 18l6-6-6-6-1.4 1.4 4.6 4.6-4.6 4.6z" />
                               </svg>
                          </div>
                          <div v-if="openSubMenuIndex === index && isSideBarActive">
@@ -134,12 +77,11 @@ const handelHover = () => {
                     </li>
                </ul>
                <hr>
-               <div class=" flex flex-wrap items-center align-baseline justify-between gap-x-2 p-2  ">
+               <div class="flex flex-wrap items-center align-baseline justify-between gap-x-2 p-2">
                     <div class="rounded-full bg-gray-400 p-2">
                          <h1>FR</h1>
                     </div>
                     <div>
-
                          <h1 v-if="isSideBarActive" class="text-flowlees font-bold">Frontend</h1>
                          <h1 v-if="isSideBarActive" class="text-flowlees">Frontend</h1>
                     </div>
@@ -153,7 +95,6 @@ const handelHover = () => {
                </div>
           </div>
           <div>
-
           </div>
      </div>
 </template>
@@ -163,18 +104,15 @@ const handelHover = () => {
 }
 
 ::-webkit-scrollbar-thumb {
-     background: #888;
-     /* Dark gray color */
-     border-radius: 4px;
+     background: rgb(37, 99, 235);
+     border-radius: 8px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-     background: #555;
-     /* Slightly darker on hover */
+.rotate-90 {
+     transform: rotate(90deg);
 }
 
-::-webkit-scrollbar-track {
-     background: #f0f0f0;
-     /* Light background */
+.rotate-0 {
+     transform: rotate(0deg);
 }
 </style>
