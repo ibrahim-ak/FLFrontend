@@ -6,7 +6,7 @@ const isSideBarActive = ref(true);
 const openSubMenuIndex = ref<number | null>(null);
 const SubMenulist = ref([
      { title: "Dashboard", icon: "mdi:view-dashboard" },
-     { title: "Water", icon: "mdi:water" },
+     { title: "Water", icon: "meteor-icons:droplet" },
      { title: "Control", icon: "mdi:cogs" },
      {
           title: "Projects",
@@ -55,7 +55,7 @@ const handelHover = () => {
                <hr />
 
                <ul>
-                    <li v-for="(items, index) in SubMenulist" :key="index" class="flex flex-col p-1 pb-4 m-1">
+                    <li v-for="(items, index) in SubMenulist" :key="index" class="p-1 pb-4 m-1">
                          <div class="flex items-center gap-x-2">
                               <!-- Render Iconify Icon Dynamically -->
                               <Icon :icon="items.icon" v-if="items.icon" class="text-2xl" />
